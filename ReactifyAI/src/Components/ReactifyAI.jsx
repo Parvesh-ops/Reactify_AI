@@ -13,7 +13,7 @@ const App = () => {
     try {
       setLoading(true);
       setError(false);
-      setAnswer("");
+      setAnswer('')
 
       const res = await axios.post(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
@@ -35,11 +35,13 @@ const App = () => {
           },
         }
       );
+      // console.log(res.data);
 
       const text =
         res.data?.candidates?.[0]?.content?.parts?.[0]?.text ||
         "No answer from Gemini";
       setAnswer(text);
+
     } catch (err) {
       console.error(err);
       setError(true);
