@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ReactAi = () => {
+const App = () => {
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState("");
   const [error, setError] = useState(false);
@@ -86,4 +86,4 @@ const ReactAi = () => {
   );
 };
 
-export default ReactAi;
+export default App;
