@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Forget = () => {
-   const navigate = useNavigate()
-
-   const handleSignIn = ()=>{
-    navigate("/login")
-   }
   const [Email, setEmail] = useState("");
 
   const formHandler = (e) => {
@@ -47,9 +42,12 @@ const Forget = () => {
         <div className="mt-6 text-sm">
           <p className="text-white/80">
             Remember your password?{" "}
-            <span className="text-pink-300 font-semibold cursor-pointer hover:underline" onClick={handleSignIn}>
+            <Link
+              to="/login"
+              className="text-pink-300 font-semibold cursor-pointer hover:underline"
+            >
               Sign In
-            </span>
+            </Link>
           </p>
         </div>
       </div>

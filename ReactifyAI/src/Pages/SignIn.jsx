@@ -1,13 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // 1️⃣ Import useNavigate
+import { Link } from "react-router-dom"; // 1️⃣ Import useNavigate
 
 const SignIn = () => {
-  const navigate = useNavigate(); // 2️⃣ Initialize the navigate function
-
-  const handleSignIn = () => {
-    navigate("/login"); // 3️⃣ Navigate to the login page on button click
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-white px-6">
       {/* Title */}
@@ -26,13 +20,11 @@ const SignIn = () => {
 
       {/* Buttons */}
       <div className="flex flex-col gap-4">
-        <button
-          type="button"
-          onClick={handleSignIn} // 4️⃣ Add click handler
-          className="px-8 py-2 bg-white/20 border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all duration-300"
+        <Link to ="/login"
+          className="px-10 py-2 bg-white/20 border border-white/30 rounded-full font-semibold hover:bg-white/30 transition-all duration-300"
         >
           Sign In
-        </button>
+        </Link>
 
         <button
           type="button"

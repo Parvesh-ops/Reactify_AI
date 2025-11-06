@@ -4,7 +4,8 @@ import SignIn from "./Pages/SignIn";
 import Login from "./Pages/Login";
 import Forget from "./Pages/Forget";
 import NewAccount from "./Pages/NewAccount";
-import ReactAi from "./Components/ReactAI";
+import ReactifyAi from "./Components/ReactifyAI";
+
 
 const App = () => {
   return (
@@ -13,7 +14,9 @@ const App = () => {
       <Route path="login" element={<Login />} />
       <Route path="forget" element={<Forget />} />
       <Route path="newaccount" element={<NewAccount />} />
-      <Route path="reactai" element={<ReactAi />} />
+      <Route path="/ai" element={<ReactifyAi/>} />
+  
+
     </Routes>
   );
 };
