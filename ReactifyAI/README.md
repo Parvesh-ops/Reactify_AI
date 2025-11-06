@@ -1,16 +1,46 @@
-# React + Vite
+# ReactifyAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**ReactifyAI** is a modern React frontend project built with **Vite** and **Tailwind CSS**. It features user authentication pages and an AI-powered assistant that uses **Google Gemini API** to generate answers to user questions.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🖥️ Demo
 
-## React Compiler
+You can navigate through the following pages:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Landing Page:** `/` — SignIn / Get Started
+- **Login Page:** `/login` — Email/password login & social login buttons
+- **Forgot Password:** `/forget` — Reset password via email
+- **New Account:** `/newaccount` — User registration form with validation
+- **React AI Page:** `/reactai` — Ask questions and get AI-generated answers
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Features
+
+- Responsive UI built with **Tailwind CSS**
+- Gradient backgrounds and glassmorphism effects
+- User authentication forms:
+  - Login
+  - Create New Account
+  - Forgot Password
+- Social login buttons (Google & Facebook links)
+- AI-powered question answering using **Google Gemini API**
+- Loading and error handling for API responses
+- Navigation using **React Router v6**
+
+---
+
+## 🚀 Technologies Used
+
+- **React** (v18+)
+- **Vite**
+- **React Router DOM** (v6)
+- **Tailwind CSS**
+- **React Icons**
+- **Axios** (for API requests)
+- **Google Gemini API** (Generative Language Model)
+
+---
+
+
