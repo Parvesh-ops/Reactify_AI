@@ -15,8 +15,6 @@ const App = () => {
       <Route path="forget" element={<Forget />} />
       <Route path="newaccount" element={<NewAccount />} />
       <Route path="/ai" element={<ReactifyAi/>} />
-  
-
     </Routes>
   );
 };
