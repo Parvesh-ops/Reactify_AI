@@ -1,14 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [userForm, setUserForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const formHandler = (e) => {
     e.preventDefault();
-    console.log(userForm);
+    setError("");
+
+    // Validate email and password are not empty
+    if (!userForm.email.trim() || !userForm.password.trim()) {
+      setError("Please enter both email and password");
+      return;
+    }
+
+    // Validate email format
+    if (!/\S+@\S+\.\S+/.test(userForm.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Validate password length
+    if (userForm.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    // If all validations pass, authenticate user
+    login({ email: userForm.email });
+    navigate("/ai");
     setUserForm({ email: "", password: "" });
   };
 
@@ -27,6 +53,13 @@ const Login = () => {
         <p className="text-center text-sm text-white/80 mb-4 font-semibold">
           Please sign in to continue
         </p>
+
+        {/* Error Message */}
+        {error && (
+          <div className="p-3 bg-red-500/20 border border-red-400 rounded-lg text-red-300 text-sm">
+            {error}
+          </div>
+        )}
 
         {/* Email Input */}
         <input
@@ -67,12 +100,12 @@ const Login = () => {
         </div>
 
         {/* Sign In Button */}
-        <Link
-          to="/ai"
-          className="w-full py-3 mt-2 bg-gradient-to-r from-pink-500 to-indigo-600 text-white font-semibold rounded-full hover:from-indigo-600 hover:to-pink-500 transition-all duration-300 text-center"
+        <button
+          type="submit"
+          className="w-full py-3 mt-2 bg-gradient-to-r from-pink-500 to-indigo-600 text-white font-semibold rounded-full hover:from-indigo-600 hover:to-pink-500 transition-all duration-300 text-center cursor-pointer"
         >
           Sign In
-        </Link>
+        </button>
 
         {/* Divider */}
         <div className="flex items-center gap-2 my-3">

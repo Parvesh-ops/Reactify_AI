@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 const App = () => {
   const [answer, setAnswer] = useState("");
   const [question, setQuestion] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { logout, user } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   const getAnswer = async () => {
     const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
@@ -52,6 +61,23 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center justify-center p-6">
+      {/* Logout Button */}
+      <div className="absolute top-6 right-6">
+        <button
+          onClick={handleLogout}
+          className="px-6 py-2 bg-white/20 border border-white/30 rounded-full text-white font-semibold hover:bg-white/30 transition-all duration-300"
+        >
+          Logout
+        </button>
+      </div>
+
+      {/* User Info */}
+      {user && (
+        <div className="absolute top-6 left-6 text-white">
+          <p className="text-sm">Welcome, <span className="font-semibold">{user.name || user.email}</span></p>
+        </div>
+      )}
+
       <div className="bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl p-8 w-full max-w-2xl text-white text-center">
         <h1 className="text-3xl font-bold mb-6">ReactifyAI</h1>
 

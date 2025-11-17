@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const NewAccount = () => {
- const navigate =    useNavigate()
- const handelSignin = ()=>{
-    navigate("/login")
- }
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  
   const [User, setUser] = useState({
     name: "",
     email: "",
@@ -33,12 +33,21 @@ const NewAccount = () => {
     else if (User.password !== User.confirmPassword)
       newErrors.confirmPassword = "Passwords do not match";
 
-    if (Object.keys(newErrors).length > 0) setError(newErrors);
-    else {
+    if (Object.keys(newErrors).length > 0) {
+      setError(newErrors);
+    } else {
       setError({});
+      // Authenticate user after successful registration
+      login({ name: User.name, email: User.email });
       alert(`Welcome ${User.name} 🎉`);
       setUser({ name: "", email: "", password: "", confirmPassword: "" });
+      // Navigate to AI page after registration
+      navigate("/ai");
     }
+  };
+
+  const handelSignin = () => {
+    navigate("/login");
   };
 
   return (
@@ -87,7 +96,10 @@ const NewAccount = () => {
         <div className="text-center mt-6 text-sm">
           <p className="text-white/80">
             Already have an account?{" "}
-            <span className="text-pink-300 font-semibold cursor-pointer hover:underline" onClick={handelSignin}>
+            <span
+              className="text-pink-300 font-semibold cursor-pointer hover:underline"
+              onClick={handelSignin}
+            >
               Sign In
             </span>
           </p>
