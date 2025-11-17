@@ -6,7 +6,7 @@ import Login from "./Pages/Login";
 import Forget from "./Pages/Forget";
 import NewAccount from "./Pages/NewAccount";
 import ReactifyAi from "./Components/ReactifyAI";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./Components/PrivateRoute";
 
 const App = () => {
   return (
